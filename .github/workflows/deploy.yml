@@ -40,14 +40,14 @@ jobs:
         env:
           PORT: 5173
           BASE_PATH: /date-invite-project/
-        # Force Vite to build the real client app, not the development canvas
-        run: pnpm --filter mockup-sandbox build
+        # Build the main application package, not the sandbox
+        run: pnpm --filter date-invite build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Use the artifact folder that worked before
-          path: 'artifacts/mockup-sandbox/dist'
+          # Point to the real application's build output folder
+          path: 'artifacts/date-invite/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
