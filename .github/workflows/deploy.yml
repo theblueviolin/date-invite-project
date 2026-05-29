@@ -45,10 +45,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Look inside the actual package folder where Vite drops the built dist files
-          path: 'artifacts/mockup-sandbox/dist'
+          # CHANGE: Target the actual main application build folder, not the preview server
+          path: 'apps/mockup-sandbox/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-# Wake up GitHub Actions pipeline
