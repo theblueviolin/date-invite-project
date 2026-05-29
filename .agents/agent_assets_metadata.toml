@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "hQkbpfcXlbIY_ELnIx36W"
+uri = "file://artifacts/date-invite/src/assets/envelope.png"
+type = "image"
+title = "Cute pastel pink heart envelope"
+
+[[generated]]
+id = "0l2v2aFtiTsPYKPxPWjuV"
+uri = "file://artifacts/date-invite/src/assets/boba.png"
+type = "image"
+title = "Cute smiling boba milk tea"
+
+[[generated]]
+id = "Ljoph9uvYp3qE5WN8c_0q"
+uri = "file://attached_assets/generated_images/cute_kawaii_boba_tea_0b30.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "sUiN1DOwDxMdPlev8XByD"
+uri = "file://attached_assets/generated_images/cute_kawaii_boba_tea_1f31.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "hEMNbIw0dtGSWj3CHajCI"
+uri = "file://attached_assets/generated_images/cute_kawaii_boba_tea_51ef.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "rWYm7GHE6EynWzqkRAYFw"
+uri = "file://attached_assets/generated_images/cute_kawaii_boba_tea_dfc7.png"
+type = "image"
+title = "generated_image"

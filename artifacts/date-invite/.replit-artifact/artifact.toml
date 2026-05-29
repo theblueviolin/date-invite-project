@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Date Invite"
+version = "1.0.0"
+id = "artifacts/date-invite"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18445
+
+[services.development]
+run = "pnpm --filter @workspace/date-invite run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/date-invite", "run", "build" ]
+publicDir = "artifacts/date-invite/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18445"
+BASE_PATH = "/"

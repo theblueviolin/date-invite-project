@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: analytics
+    description: Analytics and visit logging
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /analytics/visit:
+    post:
+      operationId: logVisit
+      tags: [analytics]
+      summary: Log a page visit
+      description: Logs the IP address, page name, and time spent on a page
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VisitInput"
+      responses:
+        "200":
+          description: Visit logged
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VisitLog"
+  /analytics/visits:
+    get:
+      operationId: getVisits
+      tags: [analytics]
+      summary: Get all visit logs
+      description: Returns all recorded visit logs
+      responses:
+        "200":
+          description: List of visit logs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/VisitLog"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    VisitInput:
+      type: object
+      required:
+        - page
+        - timeSpentSeconds
+      properties:
+        page:
+          type: string
+          description: Name of the page visited (e.g. "ask", "yes", "boba")
+        timeSpentSeconds:
+          type: number
+          description: Number of seconds spent on the page
+        userAgent:
+          type: ["string", "null"]
+          description: User agent string
+        noCount:
+          type: ["integer", "null"]
+          description: How many times the user clicked No (for the ask page)
+        finalAnswer:
+          type: ["string", "null"]
+          description: The final answer given (yes / no / boba)
+    VisitLog:
+      type: object
+      required:
+        - id
+        - page
+        - timeSpentSeconds
+        - ipAddress
+        - visitedAt
+      properties:
+        id:
+          type: integer
+        page:
+          type: string
+        timeSpentSeconds:
+          type: number
+        ipAddress:
+          type: string
+        userAgent:
+          type: ["string", "null"]
+        noCount:
+          type: ["integer", "null"]
+        finalAnswer:
+          type: ["string", "null"]
+        visitedAt:
+          type: string
+          format: date-time
