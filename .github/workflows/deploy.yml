@@ -40,14 +40,13 @@ jobs:
         env:
           PORT: 5173
           BASE_PATH: /date-invite-project/
-        # Build the main application package, not the sandbox
         run: pnpm --filter date-invite build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Point to the real application's build output folder
-          path: 'artifacts/date-invite/dist'
+          # THE FIX: Point exactly to where Vite hid the index.html file
+          path: 'artifacts/date-invite/dist/public'
 
       - name: Deploy to GitHub Pages
         id: deployment
