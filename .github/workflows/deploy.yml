@@ -39,6 +39,7 @@ jobs:
       - name: Build site
         env:
           PORT: 5173
+          BASE_PATH: /date-invite-project/
         run: pnpm --filter mockup-sandbox build
 
       - name: Upload artifact
